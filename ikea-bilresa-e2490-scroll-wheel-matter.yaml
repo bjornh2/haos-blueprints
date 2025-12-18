@@ -1,5 +1,5 @@
 # ===================================================================
-# IKEA BILRESA E2490 Smart Button Wheel – Matter Edition
+# IKEA BILRESA E2490 Scroll Wheel – Matter Edition
 # Blueprint Template v1.0.0
 #
 # Internal Versioning:
@@ -13,7 +13,7 @@
 # ===================================================================
 
 blueprint:
-  name: IKEA BILRESA E2490 Smart Button Wheel (Matter)
+  name: IKEA BILRESA E2490 Scroll Wheel (Matter)
   author: bjornh2
   description: >
     Button-featured automation for the IKEA BILRESA E2490 Matter wheel
@@ -28,9 +28,9 @@ blueprint:
 
   input:
     target_device:
-      name: BILRESA Wheel Device
+      name: BILRESA Scroll Wheel Device
       description: >
-        Select the IKEA BILRESA E2490 device. This is informational only in
+        Select the IKEA BILRESA E2490 Scroll Wheel device. This is informational only in
         v1.0.0; triggers are bound to the per-button event entities below.
       selector:
         device:
@@ -41,7 +41,7 @@ blueprint:
       name: Button 1 – Event Entity
       description: >
         Select the event entity for Button 1 (for example:
-        event.bilresa_dual_button_button_1_2).
+        Button(3) BILRESA Scroll Wheel).
       selector:
         entity:
           domain: event
@@ -50,7 +50,7 @@ blueprint:
       name: Button 2 – Event Entity
       description: >
         Select the event entity for Button 2 (for example:
-        event.bilresa_dual_button_button_2_2).
+        Button(6) BILRESA Scroll Wheel).
       selector:
         entity:
           domain: event
@@ -59,7 +59,7 @@ blueprint:
       name: Button 3 – Event Entity
       description: >
         Select the event entity for Button 3 (for example:
-        event.bilresa_dual_button_button_3_2).
+        Button(9) BILRESA Scroll Wheel).
       selector:
         entity:
           domain: event
