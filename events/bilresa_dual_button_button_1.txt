@@ -1,0 +1,106 @@
+------------------------- new_state: multi_press_1 ----------------------------------------------
+event_type: state_changed
+data:
+  entity_id: event.bilresa_dual_button_button_1
+  old_state:
+    entity_id: event.bilresa_dual_button_button_1
+    state: "2026-01-17T12:06:34.891+00:00"
+    attributes:
+      event_types:
+        - multi_press_1
+        - multi_press_2
+        - long_press
+        - long_release
+      event_type: multi_press_2
+      previousPosition: 1
+      totalNumberOfPressesCounted: 2
+      device_class: button
+      friendly_name: "BILRESA dual button #1 Button (1)"
+    last_changed: "2026-01-17T13:15:22.535108+00:00"
+    last_reported: "2026-01-17T13:15:22.535108+00:00"
+    last_updated: "2026-01-17T13:15:22.535108+00:00"
+    context:
+      id: 01KF61H617PEEAW48VVP67Q49V
+      parent_id: null
+      user_id: null
+  new_state:
+    entity_id: event.bilresa_dual_button_button_1
+    state: "2026-01-17T22:16:39.891+00:00"
+    attributes:
+      event_types:
+        - multi_press_1
+        - multi_press_2
+        - long_press
+        - long_release
+      event_type: multi_press_1
+      previousPosition: 1
+      totalNumberOfPressesCounted: 1
+      device_class: button
+      friendly_name: "BILRESA dual button #1 Button (1)"
+    last_changed: "2026-01-17T22:16:39.891372+00:00"
+    last_reported: "2026-01-17T22:16:39.891372+00:00"
+    last_updated: "2026-01-17T22:16:39.891372+00:00"
+    context:
+      id: 01KF70GA6KZ5SCR497TP348EFT
+      parent_id: null
+      user_id: null
+origin: LOCAL
+time_fired: "2026-01-17T22:16:39.891372+00:00"
+context:
+  id: 01KF70GA6KZ5SCR497TP348EFT
+  parent_id: null
+  user_id: null
+  
+  
+------------------------- new_state: long_press ----------------------------------------------
+event_type: state_changed
+data:
+  entity_id: event.bilresa_dual_button_button_2
+  old_state:
+    entity_id: event.bilresa_dual_button_button_2
+    state: "2026-01-18T08:32:09.175+00:00"
+    attributes:
+      event_types:
+        - multi_press_1
+        - multi_press_2
+        - long_press
+        - long_release
+      event_type: multi_press_1
+      previousPosition: 1
+      totalNumberOfPressesCounted: 1
+      device_class: button
+      friendly_name: "BILRESA dual button #1 Button (2)"
+    last_changed: "2026-01-18T08:32:09.175947+00:00"
+    last_reported: "2026-01-18T08:32:09.175947+00:00"
+    last_updated: "2026-01-18T08:32:09.175947+00:00"
+    context:
+      id: 01KF83Q9YQSCRC5W6Q05SHRRBH
+      parent_id: null
+      user_id: null
+  new_state:
+    entity_id: event.bilresa_dual_button_button_2
+    state: "2026-01-18T08:32:21.802+00:00"
+    attributes:
+      event_types:
+        - multi_press_1
+        - multi_press_2
+        - long_press
+        - long_release
+      event_type: long_press
+      newPosition: 1
+      device_class: button
+      friendly_name: "BILRESA dual button #1 Button (2)"
+    last_changed: "2026-01-18T08:32:21.802878+00:00"
+    last_reported: "2026-01-18T08:32:21.802878+00:00"
+    last_updated: "2026-01-18T08:32:21.802878+00:00"
+    context:
+      id: 01KF83QP9AG6XXDTF64SHRTWNC
+      parent_id: null
+      user_id: null
+origin: LOCAL
+time_fired: "2026-01-18T08:32:21.802878+00:00"
+context:
+  id: 01KF83QP9AG6XXDTF64SHRTWNC
+  parent_id: null
+  user_id: null
+

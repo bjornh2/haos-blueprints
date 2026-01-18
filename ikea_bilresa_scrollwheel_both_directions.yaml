@@ -66,21 +66,21 @@ blueprint:
     
     startup_brightness_right:
       name: "Startup Brightness on Turn On – Right (%)"
-      default: 20
+      default: 50
       description: "Brightness in % at which the light turns on when scrolling right"
       selector:
         number:
           min: 5
-          max: 50
+          max: 100
     
     startup_brightness_left:
       name: "Startup Brightness on Turn On – Left (%)"
-      default: 20
+      default: 50
       description: "Brightness in % at which the light turns on when scrolling left"
       selector:
         number:
           min: 5
-          max: 50
+          max: 100
 
 trigger:
   - platform: state
