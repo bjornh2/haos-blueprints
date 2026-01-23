@@ -1,0 +1,35 @@
+event_type: state_changed
+data:
+  entity_id: sensor.bilresa_scroll_wheel_current_switch_position_7
+  old_state:
+    entity_id: sensor.bilresa_scroll_wheel_current_switch_position_7
+    state: "0"
+    attributes:
+      state_class: measurement
+      friendly_name: "BILRESA scroll wheel #1 Current switch position (7)"
+    last_changed: "2026-01-23T20:15:37.938725+00:00"
+    last_reported: "2026-01-23T20:15:37.938725+00:00"
+    last_updated: "2026-01-23T20:15:37.938725+00:00"
+    context:
+      id: 01KFP7Z0EJ0W90ZWDXNGMR6YT5
+      parent_id: null
+      user_id: null
+  new_state:
+    entity_id: sensor.bilresa_scroll_wheel_current_switch_position_7
+    state: "1"
+    attributes:
+      state_class: measurement
+      friendly_name: "BILRESA scroll wheel #1 Current switch position (7)"
+    last_changed: "2026-01-23T20:15:38.261839+00:00"
+    last_reported: "2026-01-23T20:15:38.261839+00:00"
+    last_updated: "2026-01-23T20:15:38.261839+00:00"
+    context:
+      id: 01KFP7Z0RNVXA3QPJ4844HF1YT
+      parent_id: null
+      user_id: null
+origin: LOCAL
+time_fired: "2026-01-23T20:15:38.261839+00:00"
+context:
+  id: 01KFP7Z0RNVXA3QPJ4844HF1YT
+  parent_id: null
+  user_id: null

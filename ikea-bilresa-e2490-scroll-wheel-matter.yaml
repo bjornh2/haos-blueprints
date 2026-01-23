@@ -3,8 +3,8 @@
 # Blueprint Template v1.0.0
 #
 # Internal Versioning:
-#   schema_version: 1.0.0
-#   last_updated: 2025-12-18
+#   schema_version: 1.0.1
+#   last_updated: 2026-01-23
 #
 # Power-User Notes:
 #   - This device exposes three event entities, one per selected area button.
@@ -20,7 +20,9 @@ blueprint:
     remote. Supports single press, double press, and long press (on release)
     for three buttons. Uses event entities exposed by Home Assistant for
     Matter devices. Single-press actions are prioritized for reliability.
-    The wheel functions are not supported in this version.
+    The wheel functions must be manual activated in Device settings, 
+    Diagnostik: Current switch position (1), (2), (4), (5), (7) and (8).
+
   domain: automation
   source_url: https://github.com/bjornh2/haos-blueprints
   homeassistant:
@@ -63,6 +65,24 @@ blueprint:
       selector:
         entity:
           domain: event
+    
+    scrollwheel1_event:
+      name: Scroll Wheel 1 clockwise – Event Entity
+      description: >
+        Select the event entity for the Scroll Wheel (for example:
+        Current switch position (1) BILRESA Scroll Wheel).
+      selector:
+        entity:
+          domain: sensor
+
+    scrollwheel2_event:
+      name: Scroll Wheel 2 counterclockwise – Event Entity
+      description: >
+        Select the event entity for the Scroll Wheel (for example:
+        Current switch position (2) BILRESA Scroll Wheel).
+      selector:
+        entity:
+          domain: sensor
 
     # ---------------------------------------------------------------
     # BUTTON 1 ACTIONS
@@ -85,6 +105,23 @@ blueprint:
     button1_long:
       name: Button 1 – Long Press (on release)
       description: Action for Button 1 long press completion (long_release).
+      default: []
+      selector:
+        action: {}
+
+    # ---------------------------------------------------------------
+    # SCROLL ACTIONS Channel 1, when first LED are ON
+    # ---------------------------------------------------------------
+    scrollwheel1_clockwise:
+      name: Scroll Wheel 1 – Clockwise
+      description: Action for Scroll Wheel clockwise turn (position 1).
+      default: []
+      selector:
+        action: {}
+
+    scrollwheel2_counterclockwise:
+      name: Scroll Wheel 2 – Counterclockwise
+      description: Action for Scroll Wheel counterclockwise turn (position 2).
       default: []
       selector:
         action: {}
@@ -164,8 +201,10 @@ condition: []
 
 action:
   - variables:
-      press_type: "{{ trigger.to_state.attributes.event_type }}"
       trigger_id: "{{ trigger.id }}"
+      press_type: "{{ trigger.to_state.attributes.event_type }}"
+      scroll_class: "{{ trigger.to_state.attributes.state_class }}"
+      scroll_type: "{{ trigger.to_state.state }}"
 
   - choose:
 
