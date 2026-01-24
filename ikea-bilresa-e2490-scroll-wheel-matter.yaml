@@ -22,11 +22,16 @@ blueprint:
     Matter devices. Single-press actions are prioritized for reliability.
     The wheel functions must be manual activated in Device settings, 
     Diagnostik: Current switch position (1), (2), (4), (5), (7) and (8).
-
+    Channel 1 are when first LED are ON, Channel 2 are when second LED are ON,
+    Channel 3 are when third LED are ON.
   domain: automation
   source_url: https://github.com/bjornh2/haos-blueprints
   homeassistant:
     min_version: 2025.12.0
+
+  # ---------------------------------------------------------------
+  # INPUTS
+  # --------------------------------------------------------------
 
   input:
     target_device:
@@ -38,33 +43,6 @@ blueprint:
         device:
           filter:
             - manufacturer: IKEA of Sweden
-
-    button1_event:
-      name: Button 1 – Event Entity
-      description: >
-        Select the event entity for Button 1 (for example:
-        Button(3) BILRESA Scroll Wheel).
-      selector:
-        entity:
-          domain: event
-
-    button2_event:
-      name: Button 2 – Event Entity
-      description: >
-        Select the event entity for Button 2 (for example:
-        Button(6) BILRESA Scroll Wheel).
-      selector:
-        entity:
-          domain: event
-
-    button3_event:
-      name: Button 3 – Event Entity
-      description: >
-        Select the event entity for Button 3 (for example:
-        Button(9) BILRESA Scroll Wheel).
-      selector:
-        entity:
-          domain: event
     
     scrollwheel1cw_event:
       name: Scroll Wheel 1 clockwise – Event Entity
@@ -84,27 +62,54 @@ blueprint:
         entity:
           domain: sensor
 
+    button_channel1_event:
+      name: Button Channel 1 – Event Entity
+      description: >
+        Select the event entity for Button Channel 1 (for example:
+        Button(3) BILRESA Scroll Wheel).
+      selector:
+        entity:
+          domain: event
+
+    button_channel2_event:
+      name: Button Channel 2 – Event Entity
+      description: >
+        Select the event entity for Button Channel 2 (for example:
+        Button(6) BILRESA Scroll Wheel).
+      selector:
+        entity:
+          domain: event
+
+    button_channel3_event:
+      name: Button Channel 3 – Event Entity
+      description: >
+        Select the event entity for Button Channel 3 (for example:
+        Button(9) BILRESA Scroll Wheel).
+      selector:
+        entity:
+          domain: event
+
     # ---------------------------------------------------------------
     # BUTTON 1 ACTIONS
     # ---------------------------------------------------------------
 
     button1_single:
-      name: Button 1 – Single Press
-      description: Action for Button 1 single press (multi_press_1).
+      name: Button Channel 1 – Single Press
+      description: Action for Button Channel 1 single press (multi_press_1).
       default: []
       selector:
         action: {}
 
     button1_double:
-      name: Button 1 – Double Press
-      description: Action for Button 1 double press (multi_press_2).
+      name: Button Channel 1 – Double Press
+      description: Action for Button Channel 1 double press (multi_press_2).
       default: []
       selector:
         action: {}
 
     button1_long:
-      name: Button 1 – Long Press (on release)
-      description: Action for Button 1 long press completion (long_release).
+      name: Button Channel 1 – Long Press (on release)
+      description: Action for Button Channel 1 long press completion (long_release).
       default: []
       selector:
         action: {}
@@ -131,22 +136,22 @@ blueprint:
     # ---------------------------------------------------------------
 
     button2_single:
-      name: Button 2 – Single Press
-      description: Action for Button 2 single press (multi_press_1).
+      name: Button Channel 2 – Single Press
+      description: Action for Button Channel 2 single press (multi_press_1).
       default: []
       selector:
         action: {}
 
     button2_double:
-      name: Button 2 – Double Press
-      description: Action for Button 2 double press (multi_press_2).
+      name: Button Channel 2 – Double Press
+      description: Action for Button Channel 2 double press (multi_press_2).
       default: []
       selector:
         action: {}
 
     button2_long:
-      name: Button 2 – Long Press (on release)
-      description: Action for Button 2 long press completion (long_release).
+      name: Button Channel 2 – Long Press (on release)
+      description: Action for Button Channel 2 long press completion (long_release).
       default: []
       selector:
         action: {}
@@ -156,22 +161,22 @@ blueprint:
     # ---------------------------------------------------------------
 
     button3_single:
-      name: Button 3 – Single Press
-      description: Action for Button 3 single press (multi_press_1).
+      name: Button Channel 3 – Single Press
+      description: Action for Button Channel 3 single press (multi_press_1).
       default: []
       selector:
         action: {}
 
     button3_double:
-      name: Button 3 – Double Press
-      description: Action for Button 3 double press (multi_press_2).
+      name: Button Channel 3 – Double Press
+      description: Action for Button Channel 3 double press (multi_press_2).
       default: []
       selector:
         action: {}
 
     button3_long:
-      name: Button 3 – Long Press (on release)
-      description: Action for Button 3 long press completion (long_release).
+      name: Button Channel 3 – Long Press (on release)
+      description: Action for Button Channel 3 long press completion (long_release).
       default: []
       selector:
         action: {}
@@ -181,9 +186,9 @@ blueprint:
 # ===================================================================
 
 variables:
-  button1_entity: !input button1_event
-  button2_entity: !input button2_event
-  button3_entity: !input button3_event
+  button1_entity: !input button_channel1_event
+  button2_entity: !input button_channel2_event
+  button3_entity: !input button_channel3_event
   scrollwheel1_entity: !input scrollwheel1cw_event
   scrollwheel2_entity: !input scrollwheel2ccw_event
 
@@ -193,13 +198,13 @@ variables:
 trigger:
   - platform: state
     id: button1
-    entity_id: !input button1_event
+    entity_id: !input button_channel1_event
   - platform: state
     id: button2
-    entity_id: !input button2_event
+    entity_id: !input button_channel2_event
   - platform: state
     id: button3
-    entity_id: !input button3_event
+    entity_id: !input button_channel3_event
   - platform: state
     id: scrollwheel1cw
     entity_id: !input scrollwheel1cw_event
