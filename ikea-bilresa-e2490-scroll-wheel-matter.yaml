@@ -4,7 +4,7 @@
 #
 # Internal Versioning:
 #   schema_version: 1.0.1
-#   last_updated: 2026-01-23
+#   last_updated: 2026-01-24
 #
 # Power-User Notes:
 #   - This device exposes three event entities, one per selected area button.
@@ -66,7 +66,7 @@ blueprint:
         entity:
           domain: event
     
-    scrollwheel1_event:
+    scrollwheel1cw_event:
       name: Scroll Wheel 1 clockwise – Event Entity
       description: >
         Select the event entity for the Scroll Wheel (for example:
@@ -75,7 +75,7 @@ blueprint:
         entity:
           domain: sensor
 
-    scrollwheel2_event:
+    scrollwheel2ccw_event:
       name: Scroll Wheel 2 counterclockwise – Event Entity
       description: >
         Select the event entity for the Scroll Wheel (for example:
@@ -184,7 +184,12 @@ variables:
   button1_entity: !input button1_event
   button2_entity: !input button2_event
   button3_entity: !input button3_event
+  scrollwheel1_entity: !input scrollwheel1cw_event
+  scrollwheel2_entity: !input scrollwheel2ccw_event
 
+  # platform: state
+  # id: button2
+  # entity_id: event.bilresa_scroll_wheel_button_2
 trigger:
   - platform: state
     id: button1
@@ -195,6 +200,13 @@ trigger:
   - platform: state
     id: button3
     entity_id: !input button3_event
+  - platform: state
+    id: scrollwheel1cw
+    entity_id: !input scrollwheel1cw_event
+  - platform: state
+    id: scrollwheel2ccw
+    entity_id: !input scrollwheel2ccw_event
+
   # No 'to:' filter because event entities use timestamp states
 
 condition: []
@@ -207,9 +219,42 @@ action:
       scroll_type: "{{ trigger.to_state.state }}"
 
   - choose:
-
+      
       # -------------------------------------------------------------
-      # BUTTON 1
+      # SCROLL WHEEL 1 AND 2 Channel 1, when first LED are ON  
+      # Need to be placed before button checks to avoid conflicts
+      # -------------------------------------------------------------
+      # - conditions:
+      #     - condition: template
+      #       value_template: >
+      #         {{ trigger_id == 'scrollwheel1cw' and scroll_type == '1' }}
+      #   sequence: !input scrollwheel1_clockwise
+      
+      # - conditions:
+      #     - condition: template
+      #       value_template: >
+      #         {{ trigger_id == 'scrollwheel2ccw' and scroll_type == '1' }}
+      #   sequence: !input scrollwheel2_counterclockwise
+
+      # trigger_id: scrollwheel1cw
+      # press_type: ''
+      # scroll_class: measurement
+      # scroll_type: 1
+      
+      - conditions:
+          - condition: template
+            value_template: >
+              {{ trigger_id == 'scrollwheel1cw' and scroll_class == 'measurement' and scroll_type == 1 }}
+        sequence: !input scrollwheel1_clockwise
+      
+      - conditions:
+          - condition: template
+            value_template: >
+              {{ trigger_id == 'scrollwheel2ccw' and scroll_class == 'measurement' and scroll_type == 1 }}
+        sequence: !input scrollwheel2_counterclockwise
+      
+      # -------------------------------------------------------------
+      # BUTTON 1 Channel 1, when first LED are ON 
       # -------------------------------------------------------------
 
       - conditions:
